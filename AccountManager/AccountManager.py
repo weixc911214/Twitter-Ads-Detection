@@ -1,5 +1,7 @@
 __author__ = 'wei'
 import tweepy
+from random import randint
+
 '''
 AccountManger: Manage the behaviors of user accounts
 
@@ -67,33 +69,56 @@ class AccountManager():
         return api
 
     '''
-    test if the api has been successfully accessed
-    '''
-    def test_api(self):
-        pass
-
-    '''
     load defined user behavior rules
     '''
     @staticmethod
     def _load_rules(rule_config):
         return "No Rules"
 
-    # TODO: call api to get one twitter by keyword
+    '''
+    TODO: test if the api has been successfully accessed
+    '''
+    def test_api(self):
+        try:
+            self.get_twitter_by_keyword("NBA")
+            print "Call API successfully!"
+        except ImportError:
+            print "Something wrong in when calling API!"
+
+    '''
+    call api to get one twitter by keyword
+    '''
     def get_twitter_by_keyword(self, keyword):
-        pass
+        results = self.api.search(keyword)
+        random = randint(0, len(results) - 1)
+        #print random
+        twitter = results[random]
+        return twitter.text
 
     # TODO: mock user behavior with chosen user account and twitter
-    def post(self, user, twitter):
-        pass
+    def post(self, user, keyword=""):
+        if len(keyword) == 0:
+            keyword = user["keyword"]
+        text = self.get_twitter_by_keyword(keyword)
+        print text
+        try:
 
-    # TODO: get one account from accounts_list
+            self.api.update_status(status=text)
+        except UnicodeDecodeError:
+            print "Headers indicate a formencoded body but body was not decodable."
+
+    '''
+    get one account from accounts_list
+    '''
     def get_random_user(self):
-        pass
+        account_number = len(self.accounts_list)
+        user_info = self.accounts_list[randint(0, account_number - 1)]
+        return user_info
 
     # TODO: run the Account Manager
     def run(self):
-        pass
+        user = self.get_random_user()
+        self.post(user)
 
     # getter and setter
     def get_idle_time(self):
@@ -106,4 +131,4 @@ class AccountManager():
 if __name__ == "__main__":
 
     am = AccountManager()
-    am.print_info()
+    am.run()
