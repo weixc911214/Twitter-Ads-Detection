@@ -50,8 +50,9 @@ class AccountManager():
                     access_token = account[3]
                     access_token_secret = account[4]
                 except StandardError:
-                    print "this account has not get the access token"
-                    access_token, access_token_secret = get_access_token(self.consumer_key, self.consumer_secret)
+                    print "this account %s has not get the access token, please use get_access_token.py" % username
+                    break
+                    # access_token, access_token_secret = get_access_token(self.consumer_key, self.consumer_secret)
                 account_info = {"username": username,
                                 "password": password,
                                 "keyword": default_keyword,
@@ -113,7 +114,7 @@ class AccountManager():
             print "User: %s" % user["username"]
             print "Keyword: %s" % keyword
             print "Post: %s" % text
-            
+
         except UnicodeDecodeError:
             print "Headers indicate a formencoded body but body was not decodable."
 
