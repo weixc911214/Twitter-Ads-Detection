@@ -106,10 +106,14 @@ class AccountManager():
         if len(keyword) == 0:
             keyword = user["keyword"]
         text = self.get_twitter_by_keyword(keyword)
-        print text
+
         try:
 
             self.api.update_status(status=text)
+            print "User: %s" % user["username"]
+            print "Keyword: %s" % keyword
+            print "Post: %s" % text
+            
         except UnicodeDecodeError:
             print "Headers indicate a formencoded body but body was not decodable."
 
@@ -119,7 +123,6 @@ class AccountManager():
     def get_random_user(self):
         account_number = len(self.accounts_list)
         user_info = self.accounts_list[randint(0, account_number - 1)]
-        #print user_info
         consumer_key = self.consumer_key
         consumer_secret = self.consumer_secret
         access_token = user_info["access_token"]
@@ -131,8 +134,8 @@ class AccountManager():
 
     # TODO: run the Account Manager
     def run(self):
-        user = self.get_random_user()
-        self.post(user)
+        test_user = self.get_random_user()
+        self.post(user=test_user)
 
     # getter and setter
     def get_idle_time(self):
