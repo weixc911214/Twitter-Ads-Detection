@@ -1,63 +1,77 @@
-import urlparse
-import oauth2 as oauth
+#!/usr/bin/env python
+#
+# Copyright 2007-2013 The Python-Twitter Developers
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
-consumer_key = 'anbpwuMUw7nIlo5SXAxCU803j'
-consumer_secret = 'u2yVCFbi7os8dFrSUwmk4zzGRuyLMWkghHw1HcSiIMvSqHPp2p'
+import webbrowser
+from requests_oauthlib import OAuth1Session
 
-request_token_url = 'http://twitter.com/oauth/request_token'
-access_token_url = 'http://twitter.com/oauth/access_token'
-authorize_url = 'http://twitter.com/oauth/authorize'
+REQUEST_TOKEN_URL = 'https://api.twitter.com/oauth/request_token'
+ACCESS_TOKEN_URL = 'https://api.twitter.com/oauth/access_token'
+AUTHORIZATION_URL = 'https://api.twitter.com/oauth/authorize'
+SIGNIN_URL = 'https://api.twitter.com/oauth/authenticate'
 
-consumer = oauth.Consumer(consumer_key, consumer_secret)
-client = oauth.Client(consumer)
 
-# Step 1: Get a request token. This is a temporary token that is used for 
-# having the user authorize an access token and to sign the request to obtain 
-# said access token.
+def get_access_token(consumer_key, consumer_secret):
+    oauth_client = OAuth1Session(consumer_key, client_secret=consumer_secret)
 
-resp, content = client.request(request_token_url, "GET")
-if resp['status'] != '200':
-    raise Exception("Invalid response %s." % resp['status'])
+    print 'Requesting temp token from Twitter'
 
-request_token = dict(urlparse.parse_qsl(content))
+    try:
+        resp = oauth_client.fetch_request_token(REQUEST_TOKEN_URL)
+    except ValueError, e:
+        print 'Invalid respond from Twitter requesting temp token: %s' % e
+        return
+    url = oauth_client.authorization_url(AUTHORIZATION_URL)
 
-print "Request Token:"
-print "    - oauth_token        = %s" % request_token['oauth_token']
-print "    - oauth_token_secret = %s" % request_token['oauth_token_secret']
-print 
+    print ''
+    print 'I will try to start a browser to visit the following Twitter page'
+    print 'if a browser will not start, copy the URL to your browser'
+    print 'and retrieve the pincode to be used'
+    print 'in the next step to obtaining an Authentication Token:'
+    print ''
+    print url
+    print ''
 
-# Step 2: Redirect to the provider. Since this is a CLI script we do not 
-# redirect. In a web application you would redirect the user to the URL
-# below.
+    webbrowser.open(url)
+    pincode = raw_input('Pincode? ')
 
-print "Go to the following link in your browser:"
-print "%s?oauth_token=%s" % (authorize_url, request_token['oauth_token'])
-print 
+    print ''
+    print 'Generating and signing request for an access token'
+    print ''
 
-# After the user has granted access to you, the consumer, the provider will
-# redirect you to whatever URL you have told them to redirect to. You can 
-# usually define this in the oauth_callback argument as well.
-accepted = 'n'
-while accepted.lower() == 'n':
-    accepted = raw_input('Have you authorized me? (y/n) ')
-oauth_verifier = raw_input('What is the PIN? ')
+    oauth_client = OAuth1Session(consumer_key, client_secret=consumer_secret,
+                                 resource_owner_key=resp.get('oauth_token'),
+                                 resource_owner_secret=resp.get('oauth_token_secret'),
+                                 verifier=pincode
+    )
+    try:
+        resp = oauth_client.fetch_access_token(ACCESS_TOKEN_URL)
+    except ValueError, e:
+        print 'Invalid respond from Twitter requesting access token: %s' % e
+        return
 
-# Step 3: Once the consumer has redirected the user back to the oauth_callback
-# URL you can request the access token the user has approved. You use the 
-# request token to sign this request. After this is done you throw away the
-# request token and use the access token returned. You should store this 
-# access token somewhere safe, like a database, for future use.
-token = oauth.Token(request_token['oauth_token'],
-    request_token['oauth_token_secret'])
-token.set_verifier(oauth_verifier)
-client = oauth.Client(consumer, token)
+    print 'Your Twitter Access Token key: %s' % resp.get('oauth_token')
+    print '          Access Token secret: %s' % resp.get('oauth_token_secret')
+    print ''
 
-resp, content = client.request(access_token_url, "POST")
-access_token = dict(urlparse.parse_qsl(content))
 
-print "Access Token:"
-print "    - oauth_token        = %s" % access_token['oauth_token']
-print "    - oauth_token_secret = %s" % access_token['oauth_token_secret']
-print
-print "You may now access protected resources using the access tokens above." 
-print
+def main():
+    consumer_key = raw_input('Enter your consumer key: ')
+    consumer_secret = raw_input("Enter your consumer secret: ")
+    get_access_token(consumer_key, consumer_secret)
+
+
+if __name__ == "__main__":
+    main()
