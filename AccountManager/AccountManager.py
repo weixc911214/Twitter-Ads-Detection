@@ -1,7 +1,7 @@
 __author__ = 'wei'
 import tweepy
 from random import randint
-
+from AccountOauth import get_access_token
 '''
 AccountManger: Manage the behaviors of user accounts
 
@@ -17,13 +17,15 @@ The main functions of this class are:
 class AccountManager():
     def __init__(self, accounts_config="configs/accounts_config", application_config="configs/application_config",
                  rule_config="configs/rule_config", idle_time=5):
+
         # load configs
-        self.api = self._init_application(application_config)
+        self.consumer_key, self.consumer_secret = self._init_application(application_config)
         self.accounts_list = self._load_accounts(accounts_config)
         self.rule_sets = self._load_rules(rule_config)
 
         # the idle time of mocking user behaviors
         self.idle_time = idle_time
+        self.api = None
 
     def print_info(self):
         print "The information of AccountManager:"
@@ -34,8 +36,7 @@ class AccountManager():
     '''
     load accounts information
     '''
-    @staticmethod
-    def _load_accounts(accounts_config):
+    def _load_accounts(self, accounts_config):
         accounts_list = list()
         with open(accounts_config) as account_file:
             accounts = account_file.readlines()
@@ -44,7 +45,19 @@ class AccountManager():
                 username = account[0]
                 password = account[1]
                 default_keyword = account[2]
-                account_info = {"username": username, "password": password, "keyword": default_keyword}
+
+                try:
+                    access_token = account[3]
+                    access_token_secret = account[4]
+                except StandardError:
+                    print "this account has not get the access token"
+                    access_token, access_token_secret = get_access_token(self.consumer_key, self.consumer_secret)
+                account_info = {"username": username,
+                                "password": password,
+                                "keyword": default_keyword,
+                                "access_token": access_token,
+                                "access_token_secret": access_token_secret}
+
                 accounts_list.append(account_info)
 
         return accounts_list
@@ -59,14 +72,8 @@ class AccountManager():
 
         consumer_key = contents[0][1]
         consumer_secret = contents[1][1]
-        access_token = contents[2][1]
-        access_token_secret = contents[3][1]
 
-        auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-        auth.set_access_token(access_token, access_token_secret)
-        api = tweepy.API(auth)
-
-        return api
+        return consumer_key, consumer_secret
 
     '''
     load defined user behavior rules
@@ -91,7 +98,6 @@ class AccountManager():
     def get_twitter_by_keyword(self, keyword):
         results = self.api.search(keyword)
         random = randint(0, len(results) - 1)
-        #print random
         twitter = results[random]
         return twitter.text
 
@@ -113,6 +119,14 @@ class AccountManager():
     def get_random_user(self):
         account_number = len(self.accounts_list)
         user_info = self.accounts_list[randint(0, account_number - 1)]
+        #print user_info
+        consumer_key = self.consumer_key
+        consumer_secret = self.consumer_secret
+        access_token = user_info["access_token"]
+        access_token_secret = user_info["access_token_secret"]
+        auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+        auth.set_access_token(access_token, access_token_secret)
+        self.api = tweepy.API(auth)
         return user_info
 
     # TODO: run the Account Manager
@@ -131,4 +145,6 @@ class AccountManager():
 if __name__ == "__main__":
 
     am = AccountManager()
-    am.run()
+    user = am.get_random_user()
+    am.post(user, keyword="Columbia")
+

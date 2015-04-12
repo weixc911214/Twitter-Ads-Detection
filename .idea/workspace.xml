@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5edfdd2b-8abe-438b-95e8-0e33a6dc2325" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AccountManager/TwitterPublisher.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/AccountManager/testOauth.py" afterPath="$PROJECT_DIR$/AccountManager/AccountOauth.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AccountManager/AccountManager.py" afterPath="$PROJECT_DIR$/AccountManager/AccountManager.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AccountManager/configs/accounts_config" afterPath="$PROJECT_DIR$/AccountManager/configs/accounts_config" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AccountManager/configs/application_config" afterPath="$PROJECT_DIR$/AccountManager/configs/application_config" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AccountManager/testOauth.py" afterPath="$PROJECT_DIR$/AccountManager/testOauth.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Twitter-Ads-Detection.iws" />
@@ -30,46 +29,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AccountManager.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AccountManager.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AccountManager/AccountManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="2085">
-              <caret line="45" column="44" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TwitterPublisher.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/AccountManager/TwitterPublisher.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39156628" vertical-offset="390" max-vertical-offset="1065">
-              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.4742268" vertical-offset="1585" max-vertical-offset="2340">
+              <caret line="121" column="9" selection-start-line="121" selection-start-column="9" selection-end-line="121" selection-end-column="9" />
               <folding>
-                <element signature="e#44#58#0" expanded="true" />
+                <element signature="e#19#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="testOauth.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AccountManager/testOauth.py">
+      <file leaf-file-name="AccountOauth.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AccountManager/AccountOauth.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="672" max-vertical-offset="1230">
-              <caret line="66" column="12" selection-start-line="66" selection-start-column="12" selection-end-line="66" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1245">
+              <caret line="68" column="66" selection-start-line="68" selection-start-column="66" selection-end-line="68" selection-end-column="66" />
               <folding>
                 <element signature="e#619#636#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application_config" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AccountManager/configs/application_config">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
-              <caret line="1" column="66" selection-start-line="1" selection-start-column="66" selection-end-line="1" selection-end-column="66" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -79,6 +58,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
               <caret line="0" column="126" selection-start-line="0" selection-start-column="126" selection-end-line="0" selection-end-column="126" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application_config" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AccountManager/configs/application_config">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
+              <caret line="1" column="66" selection-start-line="1" selection-start-column="66" selection-end-line="1" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -94,11 +83,12 @@
       <list>
         <option value="$PROJECT_DIR$/AccountManager/accounts.config" />
         <option value="$PROJECT_DIR$/AccountManager/application_config" />
-        <option value="$PROJECT_DIR$/AccountManager/AccountManager.py" />
         <option value="$PROJECT_DIR$/AccountManager/testOauth.py" />
-        <option value="$PROJECT_DIR$/AccountManager/configs/accounts_config" />
         <option value="$PROJECT_DIR$/AccountManager/configs/application_config" />
         <option value="$PROJECT_DIR$/AccountManager/TwitterPublisher.py" />
+        <option value="$PROJECT_DIR$/AccountManager/configs/accounts_config" />
+        <option value="$PROJECT_DIR$/AccountManager/AccountOauth.py" />
+        <option value="$PROJECT_DIR$/AccountManager/AccountManager.py" />
       </list>
     </option>
   </component>
@@ -180,6 +170,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Twitter-Ads-Detection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Twitter-Ads-Detection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AccountManager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="configs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -206,7 +214,7 @@
       <recent name="$PROJECT_DIR$/AccountManager/configs" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.testOauth">
+  <component name="RunManager" selected="Python.AccountManager">
     <configuration default="false" name="AccountManager" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -238,7 +246,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Twitter-Ads-Detection" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AccountManager/testOauth.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AccountManager/AccountOauth.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <RunnerSettings RunnerId="PythonRunner" />
@@ -393,9 +401,9 @@
     </list>
     <recent_temporary>
       <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.testOauth" />
-        <item index="1" class="java.lang.String" itemvalue="Python.TwitterPublisher" />
-        <item index="2" class="java.lang.String" itemvalue="Python.AccountManager" />
+        <item index="0" class="java.lang.String" itemvalue="Python.AccountManager" />
+        <item index="1" class="java.lang.String" itemvalue="Python.testOauth" />
+        <item index="2" class="java.lang.String" itemvalue="Python.TwitterPublisher" />
       </list>
     </recent_temporary>
   </component>
@@ -444,7 +452,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3299363" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3299363" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -483,12 +491,12 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1170" max-vertical-offset="2100">
           <caret line="105" column="46" selection-start-line="105" selection-start-column="46" selection-end-line="105" selection-end-column="46" />
           <folding>
-            <element signature="e#19#32#0" expanded="false" />
+            <element signature="e#19#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AccountManager/testOauth.py">
+    <entry file="file://$PROJECT_DIR$/AccountManager/AccountOauth.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -509,12 +517,12 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1170" max-vertical-offset="2100">
           <caret line="105" column="46" selection-start-line="105" selection-start-column="46" selection-end-line="105" selection-end-column="46" />
           <folding>
-            <element signature="e#19#32#0" expanded="false" />
+            <element signature="e#19#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AccountManager/testOauth.py">
+    <entry file="file://$PROJECT_DIR$/AccountManager/AccountOauth.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -535,12 +543,12 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1170" max-vertical-offset="2100">
           <caret line="105" column="46" selection-start-line="105" selection-start-column="46" selection-end-line="105" selection-end-column="46" />
           <folding>
-            <element signature="e#19#32#0" expanded="false" />
+            <element signature="e#19#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AccountManager/testOauth.py">
+    <entry file="file://$PROJECT_DIR$/AccountManager/AccountOauth.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -561,12 +569,12 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1170" max-vertical-offset="2100">
           <caret line="105" column="46" selection-start-line="105" selection-start-column="46" selection-end-line="105" selection-end-column="46" />
           <folding>
-            <element signature="e#19#32#0" expanded="false" />
+            <element signature="e#19#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AccountManager/testOauth.py">
+    <entry file="file://$PROJECT_DIR$/AccountManager/AccountOauth.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -587,12 +595,12 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1170" max-vertical-offset="2100">
           <caret line="105" column="46" selection-start-line="105" selection-start-column="46" selection-end-line="105" selection-end-column="46" />
           <folding>
-            <element signature="e#19#32#0" expanded="false" />
+            <element signature="e#19#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AccountManager/testOauth.py">
+    <entry file="file://$PROJECT_DIR$/AccountManager/AccountOauth.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1005">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -636,21 +644,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AccountManager/testOauth.py">
+    <entry file="file://$PROJECT_DIR$/AccountManager/TwitterPublisher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="672" max-vertical-offset="1230">
-          <caret line="66" column="12" selection-start-line="66" selection-start-column="12" selection-end-line="66" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="1065">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding>
-            <element signature="e#619#636#0" expanded="true" />
+            <element signature="e#44#58#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AccountManager/configs/accounts_config">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="498">
-          <caret line="0" column="126" selection-start-line="0" selection-start-column="126" selection-end-line="0" selection-end-column="126" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -662,20 +662,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AccountManager/AccountManager.py">
+    <entry file="file://$PROJECT_DIR$/AccountManager/configs/accounts_config">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="2085">
-          <caret line="45" column="44" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="498">
+          <caret line="0" column="126" selection-start-line="0" selection-start-column="126" selection-end-line="0" selection-end-column="126" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AccountManager/TwitterPublisher.py">
+    <entry file="file://$PROJECT_DIR$/AccountManager/AccountOauth.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39156628" vertical-offset="390" max-vertical-offset="1065">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="732" max-vertical-offset="1245">
+          <caret line="68" column="66" selection-start-line="68" selection-start-column="66" selection-end-line="68" selection-end-column="66" />
           <folding>
-            <element signature="e#44#58#0" expanded="true" />
+            <element signature="e#619#636#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AccountManager/AccountManager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4742268" vertical-offset="1585" max-vertical-offset="2340">
+          <caret line="121" column="9" selection-start-line="121" selection-start-column="9" selection-end-line="121" selection-end-column="9" />
+          <folding>
+            <element signature="e#19#32#0" expanded="true" />
           </folding>
         </state>
       </provider>

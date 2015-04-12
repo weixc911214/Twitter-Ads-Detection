@@ -66,12 +66,13 @@ def get_access_token(consumer_key, consumer_secret):
     print '          Access Token secret: %s' % resp.get('oauth_token_secret')
     print ''
 
+    return resp.get('oauth_token'), resp.get('oauth_token_secret')
 
-def main():
-    consumer_key = raw_input('Enter your consumer key: ')
-    consumer_secret = raw_input("Enter your consumer secret: ")
-    get_access_token(consumer_key, consumer_secret)
-
-
-if __name__ == "__main__":
-    main()
+# def main():
+#     consumer_key = raw_input('Enter your consumer key: ')
+#     consumer_secret = raw_input("Enter your consumer secret: ")
+#     get_access_token(consumer_key, consumer_secret)
+#
+#
+# if __name__ == "__main__":
+#     main()
