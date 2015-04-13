@@ -19,8 +19,9 @@ class AccountManager():
                  rule_config="configs/rule_config", idle_time=5):
 
         # load configs
+        self.account_config = accounts_config
         self.consumer_key, self.consumer_secret = self._init_application(application_config)
-        self.accounts_list = self._load_accounts(accounts_config)
+        self.accounts_list = self._load_accounts(self.accounts_config)
         self.rule_sets = self._load_rules(rule_config)
 
         # the idle time of mocking user behaviors
@@ -36,6 +37,7 @@ class AccountManager():
     '''
     load accounts information
     '''
+
     def _load_accounts(self, accounts_config):
         accounts_list = list()
         with open(accounts_config) as account_file:
@@ -75,6 +77,12 @@ class AccountManager():
         consumer_secret = contents[1][1]
 
         return consumer_key, consumer_secret
+
+    '''
+    update the accounts list from accounts file
+    '''
+    def _update_accounts(self):
+        self.accounts_list = self._load_accounts(self.account_config)
 
     '''
     load defined user behavior rules
