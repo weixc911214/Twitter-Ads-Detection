@@ -1,6 +1,7 @@
 __author__ = 'wei'
 import tweepy
 from random import randint
+from tweepy.error import TweepError
 from AccountOauth import get_access_token
 '''
 AccountManger: Manage the behaviors of user accounts
@@ -19,7 +20,7 @@ class AccountManager():
                  rule_config="configs/rule_config", idle_time=5):
 
         # load configs
-        self.account_config = accounts_config
+        self.accounts_config = accounts_config
         self.consumer_key, self.consumer_secret = self._init_application(application_config)
         self.accounts_list = self._load_accounts(self.accounts_config)
         self.rule_sets = self._load_rules(rule_config)
@@ -44,6 +45,7 @@ class AccountManager():
             accounts = account_file.readlines()
             for account in accounts:
                 account = account.split(":")
+                #print account
                 username = account[0]
                 password = account[1]
                 default_keyword = account[2]
@@ -105,10 +107,15 @@ class AccountManager():
     call api to get one twitter by keyword
     '''
     def get_twitter_by_keyword(self, keyword):
-        results = self.api.search(keyword)
-        random = randint(0, len(results) - 1)
-        twitter = results[random]
-        return twitter.text
+        text = ""
+        try:
+            results = self.api.search(keyword)
+            random = randint(0, len(results) - 1)
+            twitter = results[random]
+            text = twitter.text
+        except:
+            text = keyword
+        return text
 
     # TODO: mock user behavior with chosen user account and twitter
     def post(self, user, keyword=""):
@@ -123,7 +130,8 @@ class AccountManager():
             print "Keyword: %s" % keyword
             print "Post: %s" % text
 
-        except UnicodeDecodeError:
+
+        except TweepError:
             print "Headers indicate a formencoded body but body was not decodable."
 
     '''
@@ -131,7 +139,10 @@ class AccountManager():
     '''
     def get_random_user(self):
         account_number = len(self.accounts_list)
-        user_info = self.accounts_list[randint(0, account_number - 1)]
+        # print account_number
+        index = randint(0, account_number - 1)
+        # print index
+        user_info = self.accounts_list[index]
         consumer_key = self.consumer_key
         consumer_secret = self.consumer_secret
         access_token = user_info["access_token"]
@@ -157,6 +168,14 @@ class AccountManager():
 if __name__ == "__main__":
 
     am = AccountManager()
-    user = am.get_random_user()
-    am.post(user, keyword="Columbia")
+    count = 0
+    import time
+    while count < 60:
+        try:
+            user = am.get_random_user()
+            am.post(user)
+        except TweepError:
+            print "err"
+        count = count + 1
+        time.sleep(30)
 
