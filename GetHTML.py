@@ -29,7 +29,9 @@ for _ in range(100):
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
 # print all of the page source that was loaded
-print driver.page_source.encode("utf-8")
+f = open('twitter.html', 'w')
+f.write(driver.page_source.encode("utf-8"))
+f.close()
 
 # quit and close browser
 driver.quit()
