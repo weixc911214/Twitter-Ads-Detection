@@ -177,5 +177,5 @@ if __name__ == "__main__":
         except TweepError:
             print "err"
         count = count + 1
-        time.sleep(30)
+        #time.sleep(30)
 
