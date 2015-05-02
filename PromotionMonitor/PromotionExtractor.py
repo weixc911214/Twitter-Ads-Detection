@@ -3,6 +3,8 @@ import bs4
 from selenium import webdriver
 import pymysql as sql
 
+global_name = ""
+
 class TwitterImporter:
     def __init__(self):
         self.db = sql.connect(host='cloud.comtnuycjpkv.us-west-2.rds.amazonaws.com', user='weixc1234', passwd='wxc16888', db='Twitter', cursorclass=sql.cursors.DictCursor)
@@ -58,6 +60,10 @@ def handle_promotion(username, password):
     # quit and close browser
     driver.quit()
     pe = PromotionExtractor("twitter.html")
+    global global_name
+    global_name = pe.soup.find(attrs={"class": "u-linkComplex-target"}).text.strip()
+    print global_name
+    
     result = pe.soup.find_all(attrs={"data-item-type": "tweet"})
     nick_name = pe.soup.find(attrs={"class":"u-textInheritColor"}).text
     for r in result:
@@ -122,7 +128,9 @@ def handle_tweets(username, password):
     # click Sign In and we should be logged in
     driver.find_element_by_xpath('/html/body/div[1]/div[2]/div/div/div[1]/form/div[2]/button').click()
 
-    driver.get("https://twitter.com/AllenAtl")
+    redirect_url = "https://twitter.com/" + global_name
+
+    driver.get(redirect_url)
 
     for _ in range(100):
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
