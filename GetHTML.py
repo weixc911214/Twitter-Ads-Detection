@@ -15,7 +15,7 @@ username_element = driver.find_element_by_xpath("/html/body/div[1]/div[2]/div/di
 password_element = driver.find_element_by_xpath("/html/body/div[1]/div[2]/div/div/div[1]/form/fieldset/div[2]/input")
 
 # type in username and password
-username_element.send_keys('274558119@qq.com')
+username_element.send_keys('weixc123@outlook.com')
 password_element.send_keys('wxc16888')
 
  # click Sign In and we should be logged in

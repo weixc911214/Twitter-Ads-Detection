@@ -132,7 +132,9 @@ class AccountManager():
 
 
         except TweepError:
-            print "Headers indicate a formencoded body but body was not decodable."
+            pass
+            #print "err"
+            #print "Headers indicate a formencoded body but body was not decodable."
 
     '''
     get one account from accounts_list
@@ -170,12 +172,13 @@ if __name__ == "__main__":
     am = AccountManager()
     count = 0
     import time
-    while count < 60:
+    while count < 1000:
         try:
             user = am.get_random_user()
             am.post(user)
+            count = count + 1
         except TweepError:
             print "err"
-        count = count + 1
+
         #time.sleep(30)
 
