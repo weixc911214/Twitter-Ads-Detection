@@ -1,0 +1,53 @@
+<%= form_for(@promotion) do |f| %>
+  <% if @promotion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@promotion.errors.count, "error") %> prohibited this promotion from being saved:</h2>
+
+      <ul>
+      <% @promotion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :username %><br>
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :Content %><br>
+    <%= f.text_field :content %>
+  </div>
+  <div class="field">
+    <%= f.label :keyword %><br>
+    <%= f.text_field :keyword %>
+  </div>
+   <div class="field">
+    <%= f.label :keyword1 %><br>
+    <%= f.text_field :keyword1 %>
+  </div>
+   <div class="field">
+    <%= f.label :relevance1 %><br>
+    <%= f.text_field :relevance1 %>
+  </div>
+   <div class="field">
+    <%= f.label :keyword2 %><br>
+    <%= f.text_field :keyword2 %>
+  </div>
+  <div class="field">
+    <%= f.label :relevance2 %><br>
+    <%= f.text_field :relevance2 %>
+  </div>
+   <div class="field">
+    <%= f.label :keyword3 %><br>
+    <%= f.text_field :keyword3 %>
+  </div>
+  <div class="field">
+    <%= f.label :relevance3 %><br>
+    <%= f.text_field :relevance3 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
